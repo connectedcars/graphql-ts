@@ -1,0 +1,19 @@
+steps:
+  - name: 'gcr.io/connectedcars-staging/github-connectedcars-cloudbuilder-wrapper.master:latest'
+    args: ['--secret-build-vars=SSH_KEY_PASSWORD,NPM_TOKEN']
+    secretEnv:
+      - 'SSH_KEY_PASSWORD'
+      - 'NPM_TOKEN'
+    env:
+      - 'REPO_NAME=$REPO_NAME'
+      - 'GCP_PROJECT_ID=$PROJECT_ID'
+      - 'BUILD_ID=$BUILD_ID'
+      - 'BRANCH_NAME=$BRANCH_NAME'
+      - 'TAG_NAME=$TAG_NAME'
+      - 'COMMIT_SHA=$COMMIT_SHA'
+secrets:
+- kmsKeyName: projects/connectedcars-staging/locations/global/keyRings/cloudbuilder/cryptoKeys/connectedcars-builder
+  secretEnv:
+    SSH_KEY_PASSWORD: CiQAg7wCPfO2Tf9mtZoFWjAtX7whQ481af3gyGdM9WNK26B74UkSUQBefMgeHNh0KTsGybKReXDsFcbmed7f5sw97zSe9cswpKogENM5Ye0jiIu6NfebUpCnmJ9HVHmD/yBknlW4nn1VXBs7HYGiBSFZ52i2HyEopw==
+    NPM_TOKEN: CiQAg7wCPewIVIbfIFEcQIzhDPtFwwkVhuKsZz27ikGInbEjyrcSTABefMgezLQ+uMbN3cBIleg8ogOwhKOWV/99N9Ra9HNnfwCA6n7aL443W6eiEQavWArDqlS57K0FbW0BRd+JfShkXBCojePXbCto3X8=
+timeout: 3600s

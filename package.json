@@ -1,0 +1,73 @@
+{
+  "name": "@connectedcars/graphql-ts",
+  "version": "0.0.1",
+  "description": "Graphql TS Connection Wrapper",
+  "main": "build/dist/index.js",
+  "scripts": {
+    "start": "npm run build && node ./build/dist/index.js",
+    "main": "npm run build && node ./build/dist/board-setup/main.js",
+    "test": "TZ=UTC jest --runInBand",
+    "cov": "npm run build && TZ=UTC jest --runInBand --coverage=true",
+    "build": "npm run build:types && npm run build:js:src",
+    "lint": "eslint './src/**/*.{ts,tsx}'",
+    "build:js": "npm run build:js:src",
+    "build:js:src": "babel src --out-dir ./build/dist --extensions '.ts' --source-maps --ignore '**/*.d.ts','src/**/*.test.ts'",
+    "build:types": "tsc --emitDeclarationOnly",
+    "lint:fix": "eslint --fix './src/**/*.{ts,tsx}'",
+    "ci-jest": "TZ=UTC jest --runInBand --silent --no-color --json 2> /dev/null; res=$?; echo; exit $res",
+    "ci-audit": "npm audit --json || true",
+    "ci-eslint": "eslint --format json './src/**/*.{ts,tsx}' || true",
+    "prepare": "echo \"Make npm install devDependencies for this package by having a prepare script\"",
+    "prepack": "npm run build"
+  },
+  "files": [
+    "**/!(*.test).js",
+    "**/!(*.test).d.ts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/connectedcars/graphql-ts.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/connectedcars/graphql-ts/issues"
+  },
+  "homepage": "https://github.com/connectedcars/graphql-ts#readme",
+  "devDependencies": {
+    "@babel/cli": "7.12.1",
+    "@babel/core": "7.12.3",
+    "@babel/plugin-proposal-class-properties": "7.12.1",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.12.1",
+    "@babel/plugin-proposal-numeric-separator": "7.12.1",
+    "@babel/plugin-proposal-optional-chaining": "7.12.1",
+    "@babel/preset-env": "7.12.1",
+    "@babel/preset-typescript": "7.12.1",
+    "@connectedcars/setup": "^0.9.0",
+    "@connectedcars/test": "^0.9.5",
+    "@types/extend": "^3.0.1",
+    "@types/jest": "26.0.15",
+    "@types/sinon": "^9.0.10",
+    "@types/yargs": "^15.0.12",
+    "@typescript-eslint/eslint-plugin": "3.3.0",
+    "@typescript-eslint/parser": "3.3.0",
+    "axios": "^0.21.1",
+    "babel-jest": "26.3.0",
+    "babel-plugin-macros": "^2.8.0",
+    "eslint": "7.2.0",
+    "eslint-config-prettier": "6.11.0",
+    "eslint-plugin-prettier": "3.1.4",
+    "eslint-plugin-simple-import-sort": "^5.0.3",
+    "extend": "^3.0.2",
+    "jest": "26.6.1",
+    "prettier": "2.0.5",
+    "sinon": "^9.2.3",
+    "typescript": "3.9.5"
+  },
+  "dependencies": {
+    "@connectedcars/jwtutils": "^1.0.26"
+  },
+  "engines": {
+    "node": ">=10.15.0"
+  }
+}
