@@ -1,4 +1,4 @@
-ARG NODE_VERSION=12.x
+ARG NODE_VERSION=18.x
 
 FROM europe-west1-docker.pkg.dev/connectedcars-build/node-builder/master:$NODE_VERSION as builder
 
